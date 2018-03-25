@@ -1,0 +1,9 @@
+*.pyd
+build
+__pycache__
+*.swp
+Include
+Lib
+Scripts
+tcl
+pip-selfcheck.json
