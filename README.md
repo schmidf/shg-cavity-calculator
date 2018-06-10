@@ -14,7 +14,7 @@ pipenv install
 ```
 
 ## Usage
-Use pipenv to activate the virtualenf and launch the program
+Use pipenv to activate the virtualenv and launch the program
 ```
 pipenv run python main.py
 ```
