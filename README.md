@@ -4,26 +4,20 @@ generation of laser light.
 
 ## System Requirements
 Running shg-cavity-calculator requires [Python 3](https://www.python.org/). Python package
-dependencies are listed in the [requirements file](requirements.txt). Using
-[virtualenv](https://virtualenv.pypa.io/en/stable/) is highly recommended.
+dependencies are managed using [pipenv](https://docs.pipenv.org/).
 
 ## Installation
-Generate a new virtualenv
+Use pipenv to generate a new virtualenv and install the required packages
 ```
-virtualenv shg-cavity-calculator
-```
-Install the required packages with pip (inside the virtualenv)
-```
-pip install -r requirements.txt
+cd shg-cavity-calculator
+pipenv install
 ```
 
 ## Usage
-Launch the program by running the main script (inside the virtualenv)
+Use pipenv to activate the virtualenf and launch the program
 ```
-python main.py
+pipenv run python main.py
 ```
-The scripts [run.bat](run.bat) (Windows) and [run.sh](run.sh) (Linux) can be used to activate the
-virtualenv and launch the program in one step.
 
 The diagram in the top left of the program window shows the layout of the ring resonator. The radio
 buttons in this box allow switching between a Brewster-cut and a plane crystal.
