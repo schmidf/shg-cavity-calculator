@@ -120,7 +120,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         :param value: The value in nm to set the wavelength to.
         """
-        self.cavity_parameters["lambda"] = value*1E-9
+        self.cavity_parameters["wavelength"] = value*1E-9
         self.update_cavity_mode()
 
     def update_refractive_index(self, value):
