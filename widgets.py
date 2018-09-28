@@ -235,6 +235,7 @@ class OutputWidget(QtWidgets.QGroupBox):
         if result is None:
             self.label_crystal_focus.setText("Cavity unstable\n\n")
             self.label_collimated_focus.setText("Cavity unstable\n\n")
+            self.label_fsr.setText("Cavity unstable")
             return
 
         crystal_string = "wt = {:.2f} µm\tbt = {:.2f} mm\tξt={:.3f}\n"\
@@ -258,6 +259,8 @@ class OutputWidget(QtWidgets.QGroupBox):
             result["sagittal confocal parameter collimated"]*1E3,
             result["ellipticity collimated"]))
 
+        self.label_fsr.setText("FSR = {:.1f} MHz".format(result["free spectral range"]/1E6))
+
     def _setup_ui(self):
         """Add the required widgets and set up layouts."""
         layout = QtWidgets.QVBoxLayout()
@@ -276,6 +279,11 @@ class OutputWidget(QtWidgets.QGroupBox):
         layout.addWidget(label_collimated)
         layout.addWidget(self.label_collimated_focus)
 
+        label_fsr_headline = QtWidgets.QLabel("Free spectral range:")
+        label_fsr_headline.setFont(headline_font)
+        layout.addWidget(label_fsr_headline)
+        layout.addWidget(self.label_fsr)
+
     def __init__(self, application):
         """Initialize an OutputWidget.
 
@@ -285,4 +293,5 @@ class OutputWidget(QtWidgets.QGroupBox):
         super().__init__("Output")
         self.label_crystal_focus = QtWidgets.QLabel()
         self.label_collimated_focus = QtWidgets.QLabel()
+        self.label_fsr = QtWidgets.QLabel()
         self._setup_ui()

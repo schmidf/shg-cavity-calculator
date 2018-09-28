@@ -30,6 +30,8 @@ import copy
 import numpy as np
 import gaussian_beam
 
+SPEED_OF_LIGHT = 299792458 # m/s
+
 def s_bounds_tangential(cavity_parameters):
     """Return the minimum and maximum distance between the focusing mirrors and the crystal
     surface s for which the resonator is stable in the tangential plane.
@@ -192,6 +194,7 @@ def solve_cavity(cavity_parameters):
               * sagittal waist collimated
               * sagittal confocal parameter collimated
               * ellipticity collimated
+              * free spectral range
     """
     M_t = construct_tangential_matrix(cavity_parameters)
     q_t = gaussian_beam.calculate_eigenmode(M_t, cavity_parameters["eta"])
@@ -227,6 +230,13 @@ def solve_cavity(cavity_parameters):
 
     e_collimated = w_s_collimated/w_t_collimated
 
+    l = cavity_parameters["l"]
+    v = cavity_parameters["v"]
+    s = cavity_parameters["s"]
+    eta = cavity_parameters["eta"]
+
+    fsr = SPEED_OF_LIGHT/(2*s + eta*l + 2*v)
+
     return {"tangential waist crystal":w_t_crystal,
             "tangential confocal parameter crystal":b_t_crystal,
             "tangential focusing parameter":cavity_parameters["l"]/b_t_crystal,
@@ -238,7 +248,8 @@ def solve_cavity(cavity_parameters):
             "tangential confocal parameter collimated":b_t_collimated,
             "sagittal waist collimated":w_s_collimated,
             "sagittal confocal parameter collimated":b_s_collimated,
-            "ellipticity collimated":e_collimated}
+            "ellipticity collimated":e_collimated,
+            "free spectral range":fsr}
 
 def solve_cavity_s_range(cavity_parameters, s_values=None):
     """Calculate the cavity eigenmode for a range of distances between the focusing mirrors and

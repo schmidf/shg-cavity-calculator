@@ -22,14 +22,16 @@ pipenv run python main.py
 The diagram in the top left of the program window shows the layout of the ring resonator. The radio
 buttons in this box allow switching between a Brewster-cut and a plane crystal.
 
-The box below shows the parameters of the calculated cavity eigenmode. The top half refers to the
-focus inside the crystal, the bottom half to the secondary focus in the collimated arm of the
+The box below shows the parameters of the calculated cavity eigenmode. The first section refers to
+the focus inside the crystal, the second section to the secondary focus in the collimated arm of the
 cavity. Variables ending with t refer to the tangential direction, variables ending with s to the
 sagittal direction. The calculated variables are:
 * w: Gaussian beam waist
 * b: Confocal parameter
 * ξ: Boyd-Kleinman parameter (l/b)
 * ellipticity: ws/wt
+
+The third section shows the free spectral range of the cavity.
 
 The input box allows setting the parameters of the cavity. The mirror incidence angle is the angle
 between the incident beam and the surface normal of the mirror (or half of the angle between the
